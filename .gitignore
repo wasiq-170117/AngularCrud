@@ -1,0 +1,12 @@
+# Node_modules Client
+
+/Client/node_modules
+
+# Node_modules Server
+
+/Server/node_modules
+
+# env file Server
+
+/Server/.env
+

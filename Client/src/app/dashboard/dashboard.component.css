@@ -1,0 +1,76 @@
+
+.container {
+    min-height: calc(100% -200px);
+}
+
+.img-fluid {
+    margin-left: auto;
+    display: block;
+    margin-right: auto;
+    width: 30%;
+}
+
+.ButtonDiv {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.ButtonforAdd {
+    background-color: green;
+    box-shadow: 0px 1px 1px 2px grey;
+    align-content: center;
+}
+
+.successpadding {
+    margin-left: 10px;
+}
+
+.CreateNewUserButton {
+    margin-left: 10px;
+}
+
+.UpdateUserButton {
+    margin-left: 10px;
+}
+
+.table-responsive {
+    height: 300px;
+        
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,td {
+    padding: 8px 15px;
+    /* border: 2px solid ; */
+}
+
+thead {
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+
+tbody {
+    overflow-y: auto;
+    margin-top: 0px;
+}
+
+@media (max-width: 576px) {
+    .table td, .table th {
+      font-size: 0.8rem;
+    }
+  }
+  
+/* table {
+    table-layout: fixed,
+}
+
+tbody {
+    display: block;
+    overflow: auto;
+    height: 100px;
+} */

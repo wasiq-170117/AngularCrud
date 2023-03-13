@@ -1,0 +1,110 @@
+<main class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <img src="assets/images/angular.png" class="img-fluid" alt="Image" >
+    </div>
+
+    <div class="col-sm-12 col-md-12">
+      <div class="ButtonDiv">
+        <button type="button" class="btn btn-success m-100" (click) = "open(mymodal)" >
+          Add
+        </button>
+      </div>
+    <div>
+      
+    </div>
+    <div class="table-responsive">
+      <table class="table ">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone No.</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody >
+
+        <tr *ngFor = "let user of this.userData">
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.phone}}</td>
+          <td>{{user.address}}</td>
+          <td>
+            <div class="row">
+              <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <button type="button" class="btn btn-primary"><fa-icon class="far fa-eye" [icon] = "edit" (click) = 'openUpdateDialog(mymodal, user)'></fa-icon></button>
+              </div>
+
+              <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+                <button type="button" class="btn btn-success successpadding" (click) = 'openDeleteDialog(myDeletemodal, user._id)'><fa-icon class="fas fa-edit" [icon] = "delete"></fa-icon></button>
+              </div>
+            </div>
+            
+          </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+</main>
+  
+  <!-- Modal -->
+
+  <ng-template #mymodal let-modal>
+    
+    <form [formGroup] = "DataForm" (ngSubmit) = "onSubmit(DataForm)">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click) = "modal.close('Close')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                  <label for="exampleInputname">Name</label>
+                  <input formControlName = "name" type="text" class="form-control" id="exampleInputname" placeholder="Name" required autofocus>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputemail">Email</label>
+                  <input formControlName = "email" type="email" class="form-control" id="exampleInputemail" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPhone">Phone</label>
+                  <input formControlName = "phone" type="tel" class="form-control" id="exampleInputPhone" placeholder="Phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputaddress">Address</label>
+                  <input formControlName = "address" type="text" class="form-control" id="exampleInputaddress" placeholder="Address" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click) = "modal.close('Close')">Close</button>
+                <button type="submit" class="btn btn-primary CreateNewUserButton" (click) = "modal.close('Save click')" *ngIf = "this.addingNewData" [disabled]="!DataForm.valid">Save changes</button>
+                <button type="button" class="btn btn-primary UpdateUserButton" (click) = "updateUser(DataForm)" *ngIf = "!this.addingNewData">Update Changes</button>
+              </div>
+              
+            </div>
+
+          </form>
+  </ng-template>
+
+  <ng-template #myDeletemodal let-modal>
+    
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click) = "modal.close('Close')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Are You sure You want to delete this Data?
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click) = "modal.close('Close Click')">No</button>
+      <button type="button" class="btn btn-primary" (click) = "Delete()">Yes</button>
+    </div>
+</ng-template>
